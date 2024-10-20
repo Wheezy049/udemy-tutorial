@@ -4,10 +4,14 @@ import { ReactComponent as CrownLogo} from '../../image/crown.svg'
 import './header.scss'
 import { UserContext } from '../../context/context'
 import { signOutUser } from '../../utils/firebase/firebase'
+import CartIcon from '../cart-icon/cartIcon'
+import CartDropdown from '../cart-dropdown/cartDropdown'
+import { CartContext } from '../../context/CartContext'
 
 const Header = () =>{
 
   const { currentUser } = useContext(UserContext)
+  const { isCartOpen } = useContext(CartContext)
   // console.log(currentUser)
 
   // const signOutHandler = async () =>{
@@ -31,7 +35,9 @@ const Header = () =>{
                     <Link to='/auth' className='nav-link'>Sign In</Link>
                   )
                 }
+                <CartIcon />
             </div>
+            { isCartOpen && <CartDropdown />}
         </div>
         <Outlet />
     </Fragment>
