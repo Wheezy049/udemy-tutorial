@@ -66,4 +66,20 @@
       }
     }
   }
+
+  @media (max-width: 480px) {
+    .category-container{
+      .category-body-container{
+        padding: 0 15px;
+
+        h2{
+          font-size: 16px;
+        }
+
+        p{
+          font-size: 14px;
+        }
+      }
+    }
+  }
   

@@ -13,3 +13,14 @@
       gap: 20px;
     }
  }
+
+ @media (max-width: 480px) {
+  .sign-in-container{
+    width: 300px;
+
+    h2{
+      font-size: 20px;
+    }
+  }
+  
+ }
