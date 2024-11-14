@@ -1,0 +1,11 @@
+.category-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category-title{
+    font-size: 38px;
+    margin-bottom: 25px;
+    text-align: center;
+}
