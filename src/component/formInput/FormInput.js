@@ -1,15 +1,17 @@
-import React from 'react'
-import { FormInputLabel, Input, Group } from './formInput.style'
+import React from "react";
+import { FormInputLabel, Input, Group } from "./formInput.style";
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
     <Group>
-        <Input {...otherProps} />
-        { label && (
-        <FormInputLabel shrink = {otherProps.value.length}>{label}</FormInputLabel>
-        )}
+      <Input {...otherProps} />
+      {label && (
+        <FormInputLabel shrink={otherProps.value.length}>
+          {label}
+        </FormInputLabel>
+      )}
     </Group>
-  )
-}
+  );
+};
 
-export default FormInput
+export default FormInput;

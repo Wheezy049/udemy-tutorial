@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
 // import { getRedirectResult } from 'firebase/auth'
-import SignUp from '../../component/signUp/SignUp'
-import SignIn from '../../component/signIn/SignIn'
-import './authentication.scss'
+import SignUp from "../../component/signUp/SignUp";
+import SignIn from "../../component/signIn/SignIn";
+import "./authentication.scss";
 
-const Authentication = () =>{
-
+const Authentication = () => {
   // useEffect(() => {
   //   const fetchRedirectResult = async () => {
   //     const response = await getRedirectResult(auth);
@@ -17,17 +16,16 @@ const Authentication = () =>{
 
   //   fetchRedirectResult();
   // }, []);
-   
 
   return (
-    <div className='authentication-container'>
-    {/* <h1>Sign In Page</h1> */}
-    <SignIn />
-    <SignUp />
-    {/* <button onClick={logUserIn}>Sign in with Google Popup</button> */}
-    {/* <button onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</button> */}
+    <div className="authentication-container">
+      {/* <h1>Sign In Page</h1> */}
+      <SignIn />
+      <SignUp />
+      {/* <button onClick={logUserIn}>Sign in with Google Popup</button> */}
+      {/* <button onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</button> */}
     </div>
-  )
-}
+  );
+};
 
-export default Authentication
+export default Authentication;

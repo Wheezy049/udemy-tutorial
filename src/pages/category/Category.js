@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import "./category.scss";
 // import { CategoriesContext } from '../../context/CategoriesContext'
 import ProductCard from "../../component/productCard/ProductCard";
-import Spinner  from "../../component/spinner/spinner"
+import Spinner from "../../component/spinner/spinner";
 import {
   categoriesMapSelector,
   selectCategoriesIsLoading,
@@ -22,16 +22,16 @@ function Category() {
   return (
     <Fragment>
       <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
-      {
-        isLoading ? <Spinner /> : (
-          <div className="category-container">
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className="category-container">
           {products &&
             products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
         </div>
-        )
-      }
+      )}
     </Fragment>
   );
 }

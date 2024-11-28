@@ -11,17 +11,17 @@ code {
     monospace;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
 @media (max-width: 468px) {
-  body{
+  body {
     padding: 20px;
   }
 }
