@@ -13,6 +13,7 @@ import Authentication from "./pages/authentication/Authentication";
 import Shop from "./pages/shop/Shop";
 import Checkout from "./pages/checkout/Checkout";
 import { checkUserSession, setCurrentUser } from "./store/user/userAction";
+import ConfirmationPage from "./pages/confirmation/confirmationPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="shop/*" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmation" element={<ConfirmationPage />} />
       </Route>
     </Routes>
   );

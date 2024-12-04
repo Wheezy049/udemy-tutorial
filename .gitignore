@@ -11,6 +11,8 @@
 # production
 /build
 
+.env
+
 # local env files
 .env*.local
 
