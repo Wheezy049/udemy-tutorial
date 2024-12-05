@@ -77,7 +77,7 @@ const cartReducer = (state, action) => {
 export const CartProvider = ({ children }) => {
   // const [isCartOpen, setIsCartOpen] = useState(false);
   // const [cartItems, setCartItems] = useState([]);
-
+// returning state and dispatch
   const [{ cartItems, isCartOpen }, dispatch] = useReducer(
     cartReducer,
     INITIAL_STATE

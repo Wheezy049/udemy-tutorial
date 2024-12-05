@@ -1,8 +1,12 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { BUTTON_TYPE_CLASSES } from "../button/Button";
-import { PaymentFormContainer, FormContainer, PaymentButton } from "./paymentForm.style";
+import {
+  PaymentFormContainer,
+  FormContainer,
+  PaymentButton,
+} from "./paymentForm.style";
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { selectCartTotal } from "../../store/cart/cartSelector";
 import { selectCurrentUser } from "../../store/user/userSelector";
 import { useNavigate } from "react-router-dom";
@@ -26,13 +30,16 @@ const PaymentForm = () => {
 
     try {
       // Call the server to create a payment intent
-      const response = await fetch("http://localhost:4000/create-payment-intent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: amount * 100 }), // Replace with your desired amount in cents
-      });
+      const response = await fetch(
+        "http://localhost:4000/create-payment-intent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount: amount * 100 }), // Replace with your desired amount in cents
+        }
+      );
 
       const { clientSecret } = await response.json();
 
@@ -43,7 +50,7 @@ const PaymentForm = () => {
         payment_method: {
           card: cardElement,
           billing_details: {
-            name: currentUser ? currentUser.displayName : 'Guest'
+            name: currentUser ? currentUser.displayName : "Guest",
           },
         },
       });
@@ -53,9 +60,9 @@ const PaymentForm = () => {
       if (paymentResult.error) {
         alert(paymentResult.error.message);
       } else {
-        navigate('/confirmation', {
+        navigate("/confirmation", {
           state: {
-            paymentStatus: 'succeeded',
+            paymentStatus: "succeeded",
             amount: amount * 100, // Amount in cents
           },
         });
@@ -72,11 +79,15 @@ const PaymentForm = () => {
     <PaymentFormContainer>
       <FormContainer onSubmit={paymentHandler}>
         <h2>Credit Card Payment: </h2>
-        <CardElement options={{
-          hidePostalCode: true, // This will hide the ZIP code input
-        }} />
-        <PaymentButton buttonType={BUTTON_TYPE_CLASSES.inverted} isLoading={isProcessing}>
-          {/* {isProcessing ? "Processing..." : "Pay Now"} */}
+        <CardElement
+          options={{
+            hidePostalCode: true, // This will hide the ZIP code input
+          }}
+        />
+        <PaymentButton
+          buttonType={BUTTON_TYPE_CLASSES.inverted}
+          isLoading={isProcessing}
+        >
           Pay Now
         </PaymentButton>
       </FormContainer>
