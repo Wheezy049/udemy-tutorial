@@ -1,7 +1,19 @@
 import React from "react";
 import "./cartItem.scss";
 
-function CartItem({ cartItem }) {
+type CartItems = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  quantity: number;
+}
+
+type CartItemProps = {
+  cartItem: CartItems;
+}
+
+function CartItem({ cartItem }: CartItemProps) {
   const { name, quantity, imageUrl, price } = cartItem;
   return (
     <div className="cart-item-container">

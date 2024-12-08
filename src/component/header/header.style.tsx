@@ -28,6 +28,11 @@ export const NavLink = styled(Link)`
   cursor: pointer;
 `;
 
+export const StyledLink = styled.span`
+ padding: 10px 15px;
+  cursor: pointer;
+`
+
 // .navigation {
 //     height: 70px;
 //     width: 100%;

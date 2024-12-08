@@ -9,7 +9,19 @@ import {
   addItemToCart,
 } from "../../store/cart/cartAction";
 
-function CheckoutItem({ cartItem }) {
+type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  quantity: number;
+}
+
+type CheckoutItemProps = {
+  cartItem: CartItem;
+}
+
+function CheckoutItem({ cartItem }: CheckoutItemProps) {
   const { name, imageUrl, price, quantity } = cartItem;
 
   const dispatch = useDispatch();

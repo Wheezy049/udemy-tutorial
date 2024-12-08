@@ -12,6 +12,7 @@ import {
   NavLinks,
   NavLink,
   LogoContainer,
+  StyledLink,
 } from "./header.style";
 import { selectCurrentUser } from "../../store/user/userSelector";
 import { selectIsCartOpen } from "../../store/cart/cartSelector";
@@ -40,9 +41,9 @@ const Header = () => {
         <NavLinks>
           <NavLink to="/shop">Shop</NavLink>
           {currentUser ? (
-            <NavLink as="span" onClick={signOutUser}>
+            <StyledLink as="span"  onClick={signOutUser}>
               Sign Out
-            </NavLink>
+            </StyledLink>
           ) : (
             <NavLink to="/auth">Sign In</NavLink>
           )}

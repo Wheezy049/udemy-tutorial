@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // import {
@@ -13,6 +13,7 @@ import {
   googleSignInStart,
   emailSignInStart,
 } from "../../store/user/userAction";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 // import { UserContext } from '../../context/context';
 
 const defaultFormField = {
@@ -43,7 +44,7 @@ const SignIn = () => {
     setFormFields(defaultFormField);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       // context
@@ -53,7 +54,8 @@ const SignIn = () => {
       resetFormField();
       navigate("/");
     } catch (error) {
-      if (error.code === "auth/invalid-credential") {
+      // error.code === "auth/invalid-credential"
+      if ((error as AuthError).code === AuthErrorCodes.INVALID_APP_CREDENTIAL) {
         alert("Invalid Emaill or Password");
       } else {
         console.log(error);
@@ -61,7 +63,7 @@ const SignIn = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };

@@ -5,7 +5,7 @@ import {
   FormContainer,
   PaymentButton,
 } from "./paymentForm.style";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCartTotal } from "../../store/cart/cartSelector";
 import { selectCurrentUser } from "../../store/user/userSelector";
@@ -19,7 +19,7 @@ const PaymentForm = () => {
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
 
-  const paymentHandler = async (e) => {
+  const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -45,6 +45,8 @@ const PaymentForm = () => {
 
       // Confirm payment with Stripe
       const cardElement = elements.getElement(CardElement);
+
+      if(cardElement === null) return;
 
       const paymentResult = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {

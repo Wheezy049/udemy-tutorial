@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // import {
@@ -9,6 +9,7 @@ import FormInput from "../formInput/FormInput";
 import "./signUp.scss";
 import Button from "../button/Button";
 import { signUpStart } from "../../store/user/userAction";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 // import { UserContext } from '../../context/context';
 
 const defaultFormField = {
@@ -30,7 +31,7 @@ const SignUp = () => {
     setFormFields(defaultFormField);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -47,9 +48,10 @@ const SignUp = () => {
       resetFormField();
       navigate("/auth");
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
+      
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
         alert("Email already exist");
-      } else if (error.code === "auth/weak-password") {
+      } else if ((error as AuthError).code === AuthErrorCodes.WEAK_PASSWORD) {
         alert("Password should be at least 6 characters");
       } else {
         console.log("user creation encounter an error", error);
@@ -57,7 +59,7 @@ const SignUp = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };

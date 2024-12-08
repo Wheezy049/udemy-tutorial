@@ -6,7 +6,18 @@ import "./productCard.scss";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/Button";
 // import { CartContext } from '../../context/CartContext'
 
-function ProductCard({ product }) {
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+};
+
+type ProductCardProps = {
+  product: Product;
+};
+
+function ProductCard({ product }: ProductCardProps ) {
   const { name, price, imageUrl } = product;
 
   // const { addItemToCart } = useContext(CartContext)
